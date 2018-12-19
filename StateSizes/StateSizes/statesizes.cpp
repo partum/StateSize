@@ -3,7 +3,7 @@
 using std::cout;
 using std::cin;
 //function declaration
-void multiple(int num, int size[]);
+void single(int num, int size[], char name[50][20]);
 
 int main(void) {
 	//land area of all states- Probably Delete?
@@ -28,13 +28,23 @@ int main(void) {
 
 	int usrInp, usrChoice;
 	//greedy algorithm where states can be in multiple (3 texases and one newjersey)
-	cout << "What is the size of your area? ";
+	cout << "What is the area of your space (in mi)? ";
 	cin >> usrInp;
-	multiple(usrInp, stateSize);
 	//make another where each state is unique (texas, florida, connecticut)
+	single(usrInp, stateSize, stateName);
 	//state how many sq miles are left over
 	//create an introduction
 }
-void multiple(int num, int size[]) {
-	
+void single(int num, int size[], char name[50][20]) {
+	int total = num;
+	int i = 0;
+	cout << "This area is the size of ";
+	while (i < 50) {
+		if (size[i] <= total) {
+			cout << name[i] << ", ";
+			total = total - size[i];
+			cout << "the new total is: " << total;
+		}
+		i++;
+	}
 }

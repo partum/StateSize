@@ -1,9 +1,11 @@
 #include<iostream>
 #include<string>
+
 using std::cout;
 using std::cin;
 //function declaration
 void single(int num, int size[], char name[50][20]);
+void print(std::string states[]);
 
 int main(void) {
 	//land area of all states- Probably Delete?
@@ -35,16 +37,43 @@ int main(void) {
 	//state how many sq miles are left over
 	//create an introduction
 }
+
+void print(std::string states[]) {
+	int length = 0, i;
+	for (i = 0; i < 50; i++) {
+		if (states[i] != "NULL")
+			length++;
+	}
+	if (length == 0)
+		cout << "Your area is smaller than the smallest US state.";
+	else if (length == 1)
+		cout << "The area is the size of " << states[0] << ".";
+	else if (length == 2)
+		cout << "The area is the size of " << states[0] << "and " << states[1] << ".";
+	else if (length > 2) {
+		cout << "The area is the size of ";
+		for (i = 0; i < length - 1; i++)
+			cout << states[i] << ", ";
+		cout << "and " << states[length - 1] << ".";
+	}
+}
+
 void single(int num, int size[], char name[50][20]) {
 	int total = num;
-	int i = 0;
-	cout << "This area is the size of ";
+	int i = 0, k;
+	std::string list[50];
+	for (k = 0; k < 50; k++){
+		list[k] = "NULL";
+	}
+	k = 0;
 	while (i < 50) {
 		if (size[i] <= total) {
-			cout << name[i] << ", ";
+			list[k] = name[i];
 			total = total - size[i];
-			cout << "the new total is: " << total;
+			k++;
 		}
 		i++;
 	}
+	print(list);
+	cout << "\n(With " << total << "mi left over)";
 }

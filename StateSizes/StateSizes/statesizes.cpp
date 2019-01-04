@@ -6,6 +6,7 @@ using std::cin;
 //function declaration
 void single(int num, int size[], char name[50][20]);
 void print(std::string states[]);
+void multiple(int num, int size[], char name[50][20]);
 
 int main(void) {
 	//land area of all states- Probably Delete?
@@ -33,11 +34,12 @@ int main(void) {
 	cout << "What is the area of your space (in mi)? ";
 	cin >> usrInp;
 	//make another where each state is unique (texas, florida, connecticut)
-	single(usrInp, stateSize, stateName);
+	//single(usrInp, stateSize, stateName);
 	//state how many sq miles are left over
 	//create an introduction
 }
 
+//Function that sees how many states need to be printed and prints the list in proper grammer. 
 void print(std::string states[]) {
 	int length = 0, i;
 	for (i = 0; i < 50; i++) {
@@ -58,9 +60,11 @@ void print(std::string states[]) {
 	}
 }
 
+//Creates an array by listing each state once (greedy algorithm)
 void single(int num, int size[], char name[50][20]) {
 	int total = num;
 	int i = 0, k;
+	//initializing a string array with the string "NULL"
 	std::string list[50];
 	for (k = 0; k < 50; k++){
 		list[k] = "NULL";
@@ -76,4 +80,16 @@ void single(int num, int size[], char name[50][20]) {
 	}
 	print(list);
 	cout << "\n(With " << total << "mi left over)";
+}
+
+//Creates an array by listing multiples of states
+void multiple(int num, int size[], char name[50][20]) {
+	int total = num;
+	std::string list[50];
+	for (int k = 0; k < 50; k++) {
+		list[k] = "NULL";
+	}
+	for (int i = 0; i < 50; i++) {
+
+	}
 }
